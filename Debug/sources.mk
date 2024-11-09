@@ -22,6 +22,9 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Src/flash \
 Src \
 Startup \
+chip_header/hal/Src/Legacy \
+chip_header/hal/Src \
 

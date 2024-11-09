@@ -22,6 +22,7 @@
 
 int main(void)
 {
+	m78a_micron_init();
     /* Loop forever */
 	for(;;);
 }

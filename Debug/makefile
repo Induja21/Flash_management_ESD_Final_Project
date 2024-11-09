@@ -9,7 +9,10 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include chip_header/hal/Src/Legacy/subdir.mk
+-include chip_header/hal/Src/subdir.mk
 -include Startup/subdir.mk
+-include Src/flash/subdir.mk
 -include Src/subdir.mk
 -include objects.mk
 
