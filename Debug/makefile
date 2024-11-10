@@ -9,11 +9,10 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include chip_header/hal/Src/Legacy/subdir.mk
--include chip_header/hal/Src/subdir.mk
--include Startup/subdir.mk
--include Src/flash/subdir.mk
--include Src/subdir.mk
+-include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
+-include Core/Startup/subdir.mk
+-include Core/Src/flash/subdir.mk
+-include Core/Src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -36,34 +35,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := ESD_Final_Project
+BUILD_ARTIFACT_NAME := Final_project
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-ESD_Final_Project.elf \
+Final_project.elf \
 
 MAP_FILES += \
-ESD_Final_Project.map \
+Final_project.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-ESD_Final_Project.list \
+Final_project.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: ESD_Final_Project.elf secondary-outputs
+main-build: Final_project.elf secondary-outputs
 
 # Tool invocations
-ESD_Final_Project.elf ESD_Final_Project.map: $(OBJS) $(USER_OBJS) C:\Users\nindu\STM32CubeIDE\workspace_1.16.1\ESD_Final_Project\STM32F411VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "ESD_Final_Project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\nindu\STM32CubeIDE\workspace_1.16.1\ESD_Final_Project\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ESD_Final_Project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Final_project.elf Final_project.map: $(OBJS) $(USER_OBJS) C:\Users\nindu\STM32CubeIDE\workspace_1.16.1\Final_project\STM32F411VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Final_project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\nindu\STM32CubeIDE\workspace_1.16.1\Final_project\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Final_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -72,14 +71,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-ESD_Final_Project.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "ESD_Final_Project.list"
+Final_project.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Final_project.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) ESD_Final_Project.elf ESD_Final_Project.list ESD_Final_Project.map default.size.stdout
+	-$(RM) Final_project.elf Final_project.list Final_project.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
