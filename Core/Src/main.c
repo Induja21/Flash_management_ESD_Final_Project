@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "stm32f4xx_hal.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -178,11 +179,18 @@ static void MX_SPI1_Init(void)
   {
     Error_Handler();
   }
+
   /* USER CODE BEGIN SPI1_Init 2 */
 
   /* USER CODE END SPI1_Init 2 */
 
 }
+
+/*!
+ * @brief       This function resets the chip
+ *
+ */
+
 
 /**
   * @brief GPIO Initialization Function
@@ -193,9 +201,30 @@ static void MX_GPIO_Init(void)
 {
 /* USER CODE BEGIN MX_GPIO_Init_1 */
 /* USER CODE END MX_GPIO_Init_1 */
-
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+
+//  // 2. Configure GPIO pins for SPI1 (e.g., PA5 -> SCK, PA6 -> MISO, PA7 -> MOSI)
+//  GPIO_InitStruct.Pin = GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7; // SCK, MISO, MOSI
+//  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;  // Alternate Function, Push-Pull
+//  GPIO_InitStruct.Pull = GPIO_NOPULL;      // No pull-up or pull-down resistors
+//  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH; // High speed
+//  GPIO_InitStruct.Alternate = GPIO_AF5_SPI1; // Set Alternate Function 0 for SPI1
+//
+//  // 3. Initialize GPIORCC_
+//  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  // GPIO initialization structure
+
+
+  // Configure PA4 as output
+  GPIO_InitStruct.Pin = GPIO_PIN_4;          // Select PA4
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; // Output Push-Pull mode
+  GPIO_InitStruct.Pull = GPIO_NOPULL;        // No pull-up or pull-down
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; // Low-speed GPIO
+
+  // Initialize PA4 with the above settings
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
