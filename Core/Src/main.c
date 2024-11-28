@@ -170,7 +170,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_HARD_OUTPUT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -218,13 +218,13 @@ static void MX_GPIO_Init(void)
 
 
   // Configure PA4 as output
-  GPIO_InitStruct.Pin = GPIO_PIN_4;          // Select PA4
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; // Output Push-Pull mode
-  GPIO_InitStruct.Pull = GPIO_NOPULL;        // No pull-up or pull-down
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; // Low-speed GPIO
-
-  // Initialize PA4 with the above settings
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+//  GPIO_InitStruct.Pin = GPIO_PIN_4;          // Select PA4
+//  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; // Output Push-Pull mode
+//  GPIO_InitStruct.Pull = GPIO_NOPULL;        // No pull-up or pull-down
+//  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; // Low-speed GPIO
+//
+//  // Initialize PA4 with the above settings
+//  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

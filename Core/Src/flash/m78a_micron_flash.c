@@ -134,11 +134,16 @@ void read_manufacturer_id()
    m78a_micro_device_reset();
 //   while((m78a_micro_read_reg(M78A_STATUS_REG_ADDR))&M78A_CMD_BUSY_STAT)
 //   {;}
-   HAL_Delay(1000);
+   HAL_Delay(10);
 
-   hal_status = HAL_SPI_TransmitReceive(&spihandler, &tx_buffer, &rx_buffer, 5, SPI_TIMEOUT);
-//   hal_status = HAL_SPI_Transmit(&spihandler, &tx_buffer, 2, SPI_TIMEOUT);
-//   hal_status = HAL_SPI_Receive(&spihandler, rx_buffer, 5, SPI_TIMEOUT);
+  // hal_status = HAL_SPI_TransmitReceive(&spihandler, &tx_buffer, &rx_buffer, 4, SPI_TIMEOUT);
+   hal_status = HAL_SPI_Transmit(&spihandler, tx_buffer, 2, SPI_TIMEOUT);
+   hal_status = HAL_SPI_Receive(&spihandler, rx_buffer, 2, SPI_TIMEOUT);
+   HAL_Delay(1);
+  // hal_status = HAL_SPI_TransmitReceive(&spihandler, &tx_buffer, &rx_buffer, 4, SPI_TIMEOUT);
+   hal_status = HAL_SPI_Transmit(&spihandler, tx_buffer, 2, SPI_TIMEOUT);
+   hal_status = HAL_SPI_Receive(&spihandler, rx_buffer, 2, SPI_TIMEOUT);
+
 }
 
 void m78a_byte_read()

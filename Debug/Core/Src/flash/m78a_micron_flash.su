@@ -4,5 +4,5 @@
 ../Core/Src/flash/m78a_micron_flash.c:63:6:m78a_micron_init	16	static
 ../Core/Src/flash/m78a_micron_flash.c:73:6:m78a_init_protect_reg	8	static
 ../Core/Src/flash/m78a_micron_flash.c:80:6:m78a_init_config_reg	16	static
-../Core/Src/flash/m78a_micron_flash.c:122:6:read_manufacturer_id	32	static
-../Core/Src/flash/m78a_micron_flash.c:144:6:m78a_byte_read	4	static
+../Core/Src/flash/m78a_micron_flash.c:122:6:read_manufacturer_id	24	static
+../Core/Src/flash/m78a_micron_flash.c:149:6:m78a_byte_read	4	static
